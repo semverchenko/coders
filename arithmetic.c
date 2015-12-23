@@ -113,6 +113,7 @@ void arithmetic_code(FILE* fin, FILE* fout)
 	write_byte(w, ARITHMETIC);
 	write_64(w, file_size);
 	ac = ar_coder_init(prob);
+	free(prob);
 	for (i = 0; i < ALPHABET_SIZE; ++i)
 		write_prob(w, ac->cum[i]);
 
@@ -126,6 +127,7 @@ void arithmetic_code(FILE* fin, FILE* fout)
 	/* for (i = 0; i < sizeof(prob_t) * 8; i++)
 		write_bit(w, (ac->low >> (sizeof(prob_t) * 8 - 1 - i)) & 1); */
 	ar_coder_close(ac);
+	writer_close(w);
 }
 
 data_t ac_decode_char(ar_coder *ac, reader *input)
@@ -182,4 +184,5 @@ void arithmetic_decode(FILE* fin, FILE* fout)
 		fputc(ac_decode_char(ac, r), fout);
 
 	ar_coder_close(ac);
+	reader_close(r);
 }

@@ -111,5 +111,9 @@ void bhuffman_decode(FILE* fin, FILE* fout)
 		fputc(prev = prefix_decode_char(pc[prev], r), fout);
 
 exit:
+	for (i = 0; i < ALPHABET_SIZE; ++i)
+		if (pc[i])
+			prefix_free(pc[i]);
+
 	reader_close(r);
 }
