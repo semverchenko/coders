@@ -120,8 +120,11 @@ void arithmetic_code(FILE* fin, FILE* fout)
 	while ((c = fgetc(fin)) != EOF)
 		ac_code_char(ac, w, (data_t)c);
 
-	for (i = 0; i < sizeof(prob_t) * 8; i++)
-		write_bit(w, (ac->low >> (sizeof(prob_t) * 8 - 1 - i)) & 1);
+	ac->range = 1;
+	resize_window_write(ac, w);
+
+	/* for (i = 0; i < sizeof(prob_t) * 8; i++)
+		write_bit(w, (ac->low >> (sizeof(prob_t) * 8 - 1 - i)) & 1); */
 	ar_coder_close(ac);
 }
 
