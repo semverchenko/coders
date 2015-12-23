@@ -17,7 +17,7 @@ typedef struct dhuffman_node {
 
 typedef struct {
 	uint8_t char_len;
-	struct dhuffman_node tree[ALPHABET_SIZE * 2 - 1];
+	struct dhuffman_node tree[ALPHABET_SIZE * 2 + 1];
 	struct dhuffman_node *index[ALPHABET_SIZE];
 	size_t size;
 } dhuffman_coder;

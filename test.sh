@@ -37,7 +37,7 @@ do
 	./main r test.file test.file.a 2>/dev/null
 	./main d test.file.a test.file.b 2>/dev/null
 	if ! diff -q test.file test.file.b > /dev/null; then
-		  echo "ariphmetic error"
+		  echo "arithmetic error"
 	fi
 	rm test.file.*
 
