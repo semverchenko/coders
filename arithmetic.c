@@ -130,7 +130,7 @@ void arithmetic_code(FILE* fin, FILE* fout)
 
 data_t ac_decode_char(ar_coder *ac, reader *input)
 {
-	prob_t *l = ac->cum - 1, *r = ac->cum + ALPHABET_SIZE, *m;
+	prob_t *l = ac->cum - 1, *r = ac->cum + ALPHABET_SIZE - 1, *m;
 	data_t res;
 	prob_t cum, prev_cum, step, val;
 
