@@ -87,6 +87,8 @@ void huffman_code(FILE* fin, FILE* fout)
 
 	pc = generate_huffman_coder(prob);
 
+	free(prob);
+
 	write_byte(w, HUFFMAN);
 
 	prefix_code(pc, fin, w);
